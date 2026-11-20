@@ -101,10 +101,10 @@ open build/DerivedData/Build/Products/Debug/PersonalIntelligenceHub.app
 
 首次启动后：
 
-1. 在「设置 → 信息源管理」添加 RSS/Atom 来源，或使用内置来源；
+1. 在「设置 → 信息源管理」添加 RSS/Atom 来源；
 2. 保持「设置 → 自动化设置 → 自动分析新文章」开启；
 3. 回到「今日」查看自动生成的推荐与事件；
-4. 如需本地 AI，安装并启动 Ollama，在设置中选择本地模型；`*-cloud` 模型会被拒绝。
+4. 如需本地 AI，安装并启动 Ollama，在「设置 → 高级诊断 → AI 分析」查看并按需启用本地模型；`*-cloud` 模型会被拒绝。
 
 用户数据默认保存在：
 

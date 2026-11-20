@@ -1,0 +1,50 @@
+# --- Python ---
+Backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# --- 运行时数据（数据库、日志、缓存），绝不入库 ---
+RuntimeData/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+Backend/data/
+Backend/build_meta.json
+logs/
+
+# --- 本地环境与密钥 ---
+.env
+.env.*
+!.env.example
+*.token
+secrets/
+
+# --- 模型文件 ---
+*.gguf
+*.mlx
+# 仅忽略根级/后端的本地模型权重目录，不能误伤 App 的 Swift Models 源码目录
+/models/
+Backend/models/
+
+# --- macOS / Xcode ---
+.DS_Store
+DerivedData/
+build/
+*.xcuserstate
+xcuserdata/
+*.xcodeproj/
+!App/project.yml
+App/build/
+
+# --- 截图留证目录（本地证据，不入库）---
+.screenshots/
+
+# --- 编辑器 ---
+.idea/
+.vscode/
+*.swp
+App/build-release/

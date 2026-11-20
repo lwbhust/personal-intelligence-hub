@@ -1,0 +1,304 @@
+{
+  "version": "event-cluster-v1",
+  "note": "Gold-labelled synthetic articles for deterministic clustering quality. Each case is seeded into an isolated database. `group` is the gold event partition; `expect` records the required behaviour.",
+  "cases": [
+    {
+      "id": "multi_source_same_event",
+      "description": "同一事件多家媒体报道",
+      "expect": "same_event",
+      "groups": [0, 0, 0],
+      "articles": [
+        {
+          "title": "星河科技第三季度财报：营收同比增长两成",
+          "category": "科技",
+          "summary": "星河科技公布第三季度财报，营收同比增长两成。",
+          "keywords": ["财报", "营收", "净利润"],
+          "entities": [["星河科技", "organization"], ["第三季度财报", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.2
+        },
+        {
+          "title": "星河科技发布三季度财报 净利润超预期",
+          "category": "科技",
+          "summary": "星河科技三季度财报显示净利润超出市场预期。",
+          "keywords": ["财报", "营收", "净利润"],
+          "entities": [["星河科技", "organization"], ["第三季度财报", "event"]],
+          "source": "科技观察",
+          "days_ago": 0.1
+        },
+        {
+          "title": "星河科技 Q3 财报显示营收增长 20%",
+          "category": "科技",
+          "summary": "星河科技 Q3 财报显示营收同比增长 20%。",
+          "keywords": ["财报", "营收", "净利润"],
+          "entities": [["星河科技", "organization"], ["第三季度财报", "event"]],
+          "source": "商业周刊",
+          "days_ago": 0.05
+        }
+      ]
+    },
+    {
+      "id": "evolving_progress",
+      "description": "同一事件连续进展",
+      "expect": "same_event",
+      "groups": [0, 0, 0],
+      "articles": [
+        {
+          "title": "蓝海数据宣布完成 A 轮融资",
+          "category": "财经",
+          "summary": "蓝海数据宣布完成 A 轮融资。",
+          "keywords": ["融资", "A轮", "投资"],
+          "entities": [["蓝海数据", "organization"], ["A轮融资", "event"]],
+          "source": "创投前线",
+          "days_ago": 2.0
+        },
+        {
+          "title": "蓝海数据 A 轮融资落地 投资方为远景资本",
+          "category": "财经",
+          "summary": "蓝海数据 A 轮融资落地，投资方为远景资本。",
+          "keywords": ["融资", "A轮", "投资"],
+          "entities": [["蓝海数据", "organization"], ["A轮融资", "event"]],
+          "source": "财经日报",
+          "days_ago": 1.0
+        },
+        {
+          "title": "蓝海数据完成 A 轮融资后发布新战略",
+          "category": "财经",
+          "summary": "蓝海数据完成 A 轮融资后发布新战略。",
+          "keywords": ["融资", "A轮", "投资"],
+          "entities": [["蓝海数据", "organization"], ["A轮融资", "event"]],
+          "source": "科技观察",
+          "days_ago": 0.2
+        }
+      ]
+    },
+    {
+      "id": "same_topic_different_events",
+      "description": "相同主题下的不同事件",
+      "expect": "different_events",
+      "groups": [0, 1, 2],
+      "articles": [
+        {
+          "title": "星云智能发布新一代大模型",
+          "category": "科技",
+          "summary": "星云智能发布新一代大模型。",
+          "keywords": ["人工智能", "大模型"],
+          "entities": [["星云智能", "organization"], ["大模型发布", "event"]],
+          "source": "科技观察",
+          "days_ago": 0.3
+        },
+        {
+          "title": "深蓝科技推出大模型产品",
+          "category": "科技",
+          "summary": "深蓝科技推出自有大模型产品。",
+          "keywords": ["人工智能", "大模型"],
+          "entities": [["深蓝科技", "organization"], ["大模型产品发布", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.3
+        },
+        {
+          "title": "云图公司开源新模型",
+          "category": "科技",
+          "summary": "云图公司开源新的模型。",
+          "keywords": ["人工智能", "大模型"],
+          "entities": [["云图公司", "organization"], ["开源模型", "event"]],
+          "source": "开发者周刊",
+          "days_ago": 0.3
+        }
+      ]
+    },
+    {
+      "id": "same_person_different_events",
+      "description": "同一人物参与的不同事件",
+      "expect": "different_events",
+      "groups": [0, 1],
+      "articles": [
+        {
+          "title": "张伟出任星海集团首席技术官",
+          "category": "科技",
+          "summary": "张伟出任星海集团首席技术官。",
+          "keywords": ["人事", "任命"],
+          "entities": [["张伟", "person"], ["星海集团", "organization"], ["首席技术官任命", "event"]],
+          "source": "科技观察",
+          "days_ago": 0.4
+        },
+        {
+          "title": "张伟出席星海集团年度发布会",
+          "category": "科技",
+          "summary": "张伟出席星海集团年度发布会。",
+          "keywords": ["发布会", "产品"],
+          "entities": [["张伟", "person"], ["星海集团", "organization"], ["年度发布会", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.4
+        }
+      ]
+    },
+    {
+      "id": "same_organization_different_events",
+      "description": "同一机构涉及的不同事件",
+      "expect": "different_events",
+      "groups": [0, 1],
+      "articles": [
+        {
+          "title": "银河控股宣布年度分红方案",
+          "category": "财经",
+          "summary": "银河控股宣布年度分红方案。",
+          "keywords": ["分红", "股东"],
+          "entities": [["银河控股", "organization"], ["年度分红方案", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.5
+        },
+        {
+          "title": "银河控股发布新款折叠屏手机",
+          "category": "科技",
+          "summary": "银河控股发布新款折叠屏手机。",
+          "keywords": ["手机", "发布"],
+          "entities": [["银河控股", "organization"], ["折叠屏手机发布", "event"]],
+          "source": "科技观察",
+          "days_ago": 0.5
+        }
+      ]
+    },
+    {
+      "id": "repost_same_content",
+      "description": "不同来源转载同一篇报道",
+      "expect": "same_event",
+      "groups": [0, 0],
+      "articles": [
+        {
+          "title": "极光传媒发布年度战略规划",
+          "category": "文化",
+          "summary": "极光传媒发布年度战略规划。",
+          "keywords": ["战略", "传媒"],
+          "entities": [["极光传媒", "organization"], ["年度战略规划", "event"]],
+          "source": "文化周刊",
+          "days_ago": 0.3,
+          "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "title": "极光传媒发布年度战略规划",
+          "category": "文化",
+          "summary": "极光传媒发布年度战略规划。",
+          "keywords": ["战略", "传媒"],
+          "entities": [["极光传媒", "organization"], ["年度战略规划", "event"]],
+          "source": "转载站点",
+          "days_ago": 0.2,
+          "content_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "similar_title_different_facts",
+      "description": "文章标题相似但事实不同（不同季度财报）",
+      "expect": "different_events",
+      "groups": [0, 1],
+      "articles": [
+        {
+          "title": "天穹电子发布第三季度财报",
+          "category": "财经",
+          "summary": "天穹电子发布第三季度财报。",
+          "keywords": ["财报", "营收"],
+          "entities": [["天穹电子", "organization"], ["第三季度财报", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.4
+        },
+        {
+          "title": "天穹电子发布第四季度财报",
+          "category": "财经",
+          "summary": "天穹电子发布第四季度财报。",
+          "keywords": ["财报", "营收"],
+          "entities": [["天穹电子", "organization"], ["第四季度财报", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.3
+        }
+      ]
+    },
+    {
+      "id": "cross_language_same_event",
+      "description": "不同语言报道同一事件（确定性信号不足，进入人工复核）",
+      "expect": "review",
+      "groups": [0, 0],
+      "articles": [
+        {
+          "title": "星河科技第三季度财报营收增长两成",
+          "category": "财经",
+          "summary": "星河科技第三季度财报营收增长两成。",
+          "keywords": ["财报", "营收", "增长"],
+          "entities": [["星河科技（Galaxy Tech）", "organization"], ["第三季度财报", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.2
+        },
+        {
+          "title": "Galaxy Tech Q3 earnings beat estimates",
+          "category": "财经",
+          "summary": "Galaxy Tech Q3 earnings beat estimates.",
+          "keywords": ["earnings", "revenue", "growth"],
+          "entities": [["星河科技（Galaxy Tech）", "organization"], ["Q3 earnings", "event"]],
+          "source": "Global Wire",
+          "days_ago": 0.2
+        }
+      ]
+    },
+    {
+      "id": "missing_entities",
+      "description": "文章实体缺失（抽取失败）",
+      "expect": "review",
+      "groups": [0, 0],
+      "articles": [
+        {
+          "title": "星河科技第三季度财报正式发布",
+          "category": "财经",
+          "summary": "星河科技第三季度财报正式发布。",
+          "keywords": ["财报", "营收"],
+          "entities": [["星河科技", "organization"], ["第三季度财报", "event"]],
+          "source": "财经日报",
+          "days_ago": 0.2
+        },
+        {
+          "title": "第三季度财报：星河科技营收增长",
+          "category": "财经",
+          "summary": "第三季度财报显示星河科技营收增长。",
+          "keywords": ["财报", "营收"],
+          "entities": [],
+          "source": "科技观察",
+          "days_ago": 0.1
+        }
+      ]
+    },
+    {
+      "id": "spans_multiple_days",
+      "description": "事件跨越多个日期持续发展",
+      "expect": "same_event",
+      "groups": [0, 0, 0],
+      "articles": [
+        {
+          "title": "苍穹软件年度开发者大会开幕",
+          "category": "科技",
+          "summary": "苍穹软件年度开发者大会开幕。",
+          "keywords": ["开发者大会", "软件"],
+          "entities": [["苍穹软件", "organization"], ["年度开发者大会", "event"]],
+          "source": "科技观察",
+          "days_ago": 8.0
+        },
+        {
+          "title": "苍穹软件开发者大会发布新工具",
+          "category": "科技",
+          "summary": "苍穹软件开发者大会发布新工具。",
+          "keywords": ["开发者大会", "软件"],
+          "entities": [["苍穹软件", "organization"], ["年度开发者大会", "event"]],
+          "source": "财经日报",
+          "days_ago": 3.0
+        },
+        {
+          "title": "苍穹软件开发者大会闭幕并公布路线图",
+          "category": "科技",
+          "summary": "苍穹软件开发者大会闭幕并公布路线图。",
+          "keywords": ["开发者大会", "软件"],
+          "entities": [["苍穹软件", "organization"], ["年度开发者大会", "event"]],
+          "source": "开发者周刊",
+          "days_ago": 0.2
+        }
+      ]
+    }
+  ]
+}
